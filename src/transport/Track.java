@@ -55,6 +55,8 @@ public class Track extends Transport<DriverC> {
 
     private LoadCapacity loadCapacity;
 
+    public static DriverC driver;
+
     public Track(DriverC driver, String brand, String model, int engineCapacity, LoadCapacity loadCapacity) {
         super(driver, brand, model, engineCapacity);
         this.loadCapacity = loadCapacity;
@@ -66,6 +68,15 @@ public class Track extends Transport<DriverC> {
             System.out.println("Данных по транспортному средству недостаточно");
         } else {
             System.out.println(loadCapacity);
+        }
+    }
+
+    @Override
+    public void performDiagnostics() throws CheckDrivers{
+        if (Track.driver == null) {
+            throw new CheckDrivers("Водител нет, автомобиль не прошёл диагностику");
+        } else {
+            System.out.println(Track.driver);
         }
     }
 }

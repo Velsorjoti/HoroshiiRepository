@@ -67,4 +67,9 @@ public class Bus extends Transport<DriverD>{
         }
     }
 
+    @Override
+    public void performDiagnostics() {
+        System.out.println("Не проводим диагностику, есть водитель или нет(так по заданию).");
+    }
+
 }

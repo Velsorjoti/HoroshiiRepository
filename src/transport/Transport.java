@@ -58,4 +58,6 @@ public abstract class Transport<T> implements Competing {
     }
 
     public abstract void printType();
+
+    public abstract void performDiagnostics() throws CheckDrivers;
 }
