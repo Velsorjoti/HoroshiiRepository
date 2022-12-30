@@ -19,6 +19,11 @@ public class PoleChudes {
         DriverD vodila = new DriverD("Крокодил","Есть",10);
         Bus buhanka = new Bus(vodila,"Буханочка","Народная",1000, Bus.TypeOfCapacity.SMALL);
         buhanka.printType();
+        try {
+            uaz.performDiagnostics();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void terribleMetod(DriverB driverB, Automobile automobile) {
