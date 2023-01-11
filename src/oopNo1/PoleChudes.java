@@ -1,28 +1,56 @@
 package oopNo1;
+import drivers.Driver;
 import drivers.DriverB;
 import drivers.DriverC;
 import drivers.DriverD;
-import transport.Automobile;
-import transport.Bus;
-import transport.Track;
+import enumpocket.FixType;
+import transport.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PoleChudes {
 
     public static void main(String[] args){
-        DriverB a = new DriverB("Судьбоносный","Есть",10);
-        Automobile ferari = new Automobile( a,"Феррари","Ля Ферарри",1000, Automobile.BodyType.COUPE);
-        terribleMetod(a,ferari);
-        ferari.printType();
+        DriverB destiny = new DriverB("Судьбоносный","Есть",10);
+        Automobile ferari = new Automobile( destiny,"Феррари","Ля Ферарри",1000, Automobile.BodyType.COUPE, FixType.C);
+
         DriverC voditel = new DriverC("Водитель", "Есть", 10);
-        Track uaz = new Track(voditel,"Уаз", "Проходимая", 1000, Track.LoadCapacity.N1 );
-        uaz.printType();
+        Track uaz = new Track(voditel,"Уаз", "Проходимая", 1000, Track.LoadCapacity.N1, FixType.B );
+
         DriverD vodila = new DriverD("Крокодил","Есть",10);
-        Bus buhanka = new Bus(vodila,"Буханочка","Народная",1000, Bus.TypeOfCapacity.SMALL);
-        buhanka.printType();
+        Bus buhanka = new Bus(vodila,"Буханочка","Народная",1000, Bus.TypeOfCapacity.SMALL, FixType.D);
+
+        List<Transport> allMashines = new ArrayList<>();
+        allMashines.add(ferari);
+        allMashines.add(uaz);
+        allMashines.add(buhanka);
+
+        List<Driver> allDrivers = new ArrayList<>();
+        allDrivers.add(destiny);
+        allDrivers.add(voditel);
+        allDrivers.add(vodila);
+
+        Mechanics Vasilii = new Mechanics("Вася", "Маруся", FixType.B);
+        Mechanics Petr = new Mechanics("Петя","Маша и Три Медведя", FixType.C);
+        Mechanics Ivan = new Mechanics("Иван", "Золушка-Металлист", FixType.D);
+        Mechanics MomsFriendSon = new Mechanics("Сын маминой подруги Барнэби","Газпром", FixType.C, FixType.D, FixType.B);
+
+        List<Mechanics> allMechanics = new ArrayList<>();
+        allMechanics.add(Vasilii);
+        allMechanics.add(Petr);
+        allMechanics.add(Ivan);
+        allMechanics.add(MomsFriendSon);
+
     }
 
-    public static void terribleMetod(DriverB driverB, Automobile automobile) {
-        System.out.println("Водитель" + driverB.getNameDriver() + " управляет" + automobile.getBrand() + " будет участвовать в заезде.");
+    public static void terribleMetod(DriverD driverd,Automobile automobile) {
+        System.out.println("Водитель" + driverd.getNameDriver() + " управляет" + automobile.getBrand() + " будет участвовать в заезде.");
     }
+
+    public static void  printInfoAuto(Transport transport){
+        System.out.println("Машину ведёт " + transport.getDriver() + "механики у неё: " + transport.getMechanic());
+    }
+
 }
 
