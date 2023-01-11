@@ -2,6 +2,7 @@ package transport;
 
 import drivers.DriverC;
 import drivers.DriverD;
+import enumpocket.FixType;
 
 public class Track extends Transport<DriverC> {
     public enum LoadCapacity {
@@ -57,8 +58,8 @@ public class Track extends Transport<DriverC> {
 
     public static DriverC driver;
 
-    public Track(DriverC driver, String brand, String model, int engineCapacity, LoadCapacity loadCapacity) {
-        super(driver, brand, model, engineCapacity);
+    public Track(DriverC driver, String brand, String model, int engineCapacity, LoadCapacity loadCapacity, FixType fixType, Mechanics...mechanics) {
+        super(driver, brand, model, engineCapacity, fixType,mechanics);
         this.loadCapacity = loadCapacity;
     }
 

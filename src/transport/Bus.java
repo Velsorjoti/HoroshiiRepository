@@ -2,6 +2,7 @@ package transport;
 
 import drivers.DriverC;
 import drivers.DriverD;
+import enumpocket.FixType;
 
 public class Bus extends Transport<DriverD>{
     public enum TypeOfCapacity {
@@ -53,8 +54,8 @@ public class Bus extends Transport<DriverD>{
     }
 }
     private TypeOfCapacity typeOfCapacity;
-    public Bus(DriverD driver, String brand, String model, int engineCapacity, TypeOfCapacity typeOfCapacity) {
-        super(driver, brand, model, engineCapacity);
+    public Bus(DriverD driver, String brand, String model, int engineCapacity, TypeOfCapacity typeOfCapacity, FixType fixType,Mechanics...mechanics) {
+        super(driver, brand, model, engineCapacity, fixType,mechanics);
         this.typeOfCapacity =typeOfCapacity;
     }
 
