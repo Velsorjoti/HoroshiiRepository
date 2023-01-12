@@ -49,6 +49,13 @@ public class PoleChudes {
         for (Map.Entry<Transport,Mechanics> transportMechanicsEntry: transportMechanicsMap.entrySet()) {
             System.out.println("Ключ " + transportMechanicsEntry.getKey().getBrand() + " : " + transportMechanicsEntry.getValue().getNameMechanic());
         }
+
+        Set<Driver> set = new HashSet<>(allDrivers);
+        Iterator<Driver> iterator = set.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next().getNameDriver());
+        }
+
     }
 
     public static void terribleMetod(DriverD driverd,Automobile automobile) {
