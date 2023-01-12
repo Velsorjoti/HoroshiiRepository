@@ -1,5 +1,7 @@
 package drivers;
 
+import java.util.Objects;
+
 public class Driver {
 
     protected String nameDriver;
@@ -63,12 +65,25 @@ public class Driver {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return experience == driver.experience && Objects.equals(nameDriver, driver.nameDriver) && Objects.equals(presencdriverslicense, driver.presencdriverslicense);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameDriver, presencdriverslicense, experience);
+    }
+
+    @Override
     public String toString() {
         return "Driver{" +
                 "nameDriver='" + nameDriver + '\'' +
                 ", presencdriverslicense='" + presencdriverslicense + '\'' +
                 ", experience=" + experience +
-                '}';
+                '}' + "\n";
     }
 
     public void startDrive() {

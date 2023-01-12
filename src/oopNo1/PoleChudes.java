@@ -6,8 +6,7 @@ import drivers.DriverD;
 import enumpocket.FixType;
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PoleChudes {
 
@@ -31,17 +30,25 @@ public class PoleChudes {
         allDrivers.add(voditel);
         allDrivers.add(vodila);
 
-        Mechanics Vasilii = new Mechanics("Вася", "Маруся", FixType.B);
-        Mechanics Petr = new Mechanics("Петя","Маша и Три Медведя", FixType.C);
-        Mechanics Ivan = new Mechanics("Иван", "Золушка-Металлист", FixType.D);
-        Mechanics MomsFriendSon = new Mechanics("Сын маминой подруги Барнэби","Газпром", FixType.C, FixType.D, FixType.B);
+        Mechanics vasilii = new Mechanics("Вася", "Маруся", FixType.B);
+        Mechanics petr = new Mechanics("Петя","Маша и Три Медведя", FixType.C);
+        Mechanics ivan = new Mechanics("Иван", "Золушка-Металлист", FixType.D);
+        Mechanics momsFriendSon = new Mechanics("Сын маминой подруги Барнэби","Газпром", FixType.C, FixType.D, FixType.B);
 
         List<Mechanics> allMechanics = new ArrayList<>();
-        allMechanics.add(Vasilii);
-        allMechanics.add(Petr);
-        allMechanics.add(Ivan);
-        allMechanics.add(MomsFriendSon);
+        allMechanics.add(vasilii);
+        allMechanics.add(petr);
+        allMechanics.add(ivan);
+        allMechanics.add(momsFriendSon);
 
+        Map<Transport,Mechanics> transportMechanicsMap = new HashMap<>();
+        transportMechanicsMap.put(ferari,vasilii);
+        transportMechanicsMap.put(uaz,petr);
+        transportMechanicsMap.put(buhanka,ivan);
+        transportMechanicsMap.put(ferari,vasilii);
+        for (Map.Entry<Transport,Mechanics> transportMechanicsEntry: transportMechanicsMap.entrySet()) {
+            System.out.println("Ключ " + transportMechanicsEntry.getKey().getBrand() + " : " + transportMechanicsEntry.getValue().getNameMechanic());
+        }
     }
 
     public static void terribleMetod(DriverD driverd,Automobile automobile) {
