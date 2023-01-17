@@ -85,4 +85,11 @@ public class HomeWorkeofFunctionMethod {
         };
         return function;
     }
+
+    public static <T, U> Function<T, U> ternaryOperator1(
+            Predicate<? super T> condition1,
+            Function<? super T, ? extends U> ifTrue,
+            Function<? super T, ? extends U> ifFalse) {
+        return t -> condition1.test(t) ? ifTrue.apply(t) : ifFalse.apply(t);
+    }
 }
