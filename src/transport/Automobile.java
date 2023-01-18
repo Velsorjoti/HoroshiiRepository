@@ -1,6 +1,7 @@
 package transport;
 
 import drivers.DriverB;
+import enumpocket.FixType;
 
 public class Automobile extends Transport<DriverB> {
     public enum BodyType {
@@ -42,11 +43,13 @@ public class Automobile extends Transport<DriverB> {
         this.bodyType = bodyType;
     }
 
-    private BodyType bodyType;
-    public Automobile(DriverB driver, String brand, String model, int engineCapacity, BodyType bodyType) {
-        super(driver, brand, model, engineCapacity);
-        this.bodyType = bodyType;
+    public  DriverB driver;
 
+    private BodyType bodyType;
+
+    public Automobile(DriverB driver, String brand, String model, int engineCapacity, BodyType bodyType, FixType fixType, Mechanics...mechanics) {
+        super(driver, brand, model, engineCapacity, fixType, mechanics);
+        this.bodyType = bodyType;
     }
 
     @Override
@@ -64,9 +67,18 @@ public class Automobile extends Transport<DriverB> {
 
     @Override
     public void printType() {
-        if(bodyType == null) {
+        if (bodyType == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         }
         System.out.println(bodyType);
+    }
+
+    @Override
+    public void performDiagnostics() throws CheckDrivers {
+        if (this.driver == null) {
+            throw new CheckDrivers("Водител нет, автомобиль не прошёл диагностику");
+        } else {
+            System.out.println(this.driver);
+        }
     }
 }

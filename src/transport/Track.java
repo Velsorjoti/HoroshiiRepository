@@ -2,6 +2,7 @@ package transport;
 
 import drivers.DriverC;
 import drivers.DriverD;
+import enumpocket.FixType;
 
 public class Track extends Transport<DriverC> {
     public enum LoadCapacity {
@@ -55,8 +56,10 @@ public class Track extends Transport<DriverC> {
 
     private LoadCapacity loadCapacity;
 
-    public Track(DriverC driver, String brand, String model, int engineCapacity, LoadCapacity loadCapacity) {
-        super(driver, brand, model, engineCapacity);
+    public static DriverC driver;
+
+    public Track(DriverC driver, String brand, String model, int engineCapacity, LoadCapacity loadCapacity, FixType fixType, Mechanics...mechanics) {
+        super(driver, brand, model, engineCapacity, fixType,mechanics);
         this.loadCapacity = loadCapacity;
     }
 
@@ -66,6 +69,15 @@ public class Track extends Transport<DriverC> {
             System.out.println("Данных по транспортному средству недостаточно");
         } else {
             System.out.println(loadCapacity);
+        }
+    }
+
+    @Override
+    public void performDiagnostics() throws CheckDrivers{
+        if (Track.driver == null) {
+            throw new CheckDrivers("Водител нет, автомобиль не прошёл диагностику");
+        } else {
+            System.out.println(Track.driver);
         }
     }
 }
